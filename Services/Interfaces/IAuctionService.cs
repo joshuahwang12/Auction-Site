@@ -9,5 +9,8 @@ namespace auction_site.Services.Interfaces
     interface IAuctionService : IService
     {
         void ConfirmAuctionWinner(AuctionItem auctionItem);
+
+        AuctionItem GetAuctionItem(Bid bid);
+        List<AuctionItem> GetAuctionItems();
     }
 }

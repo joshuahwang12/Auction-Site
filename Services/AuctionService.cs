@@ -24,7 +24,16 @@ namespace auction_site.Services
             if (auctionItem.EndTime <= DateTime.Now)
             {
                 this.EmailService.SendEmail(auctionItem.HighestBidder);
+            }
+        }
 
+        public List<AuctionItem> GetAuctionItems()
+        {
+            var query = "Select * from AuctionItems";
+            using (var connection = _Context.NewConnection())
+            {
+                var auctionItems = connection.Query<AuctionItem>(query).ToList();
+                return auctionItems;
             }
         }
 
